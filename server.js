@@ -21,10 +21,16 @@ async function webScraper(url) {
 
         const name = await page.$eval(`#spnGB27562StationNm${i}`, element => element.textContent)
         const price = await page.$eval(`#spnGB27562Price${i}`, element => element.textContent)
+        const address = await page.$eval(`#spnGB27562Address2_${i}`, element => element.textContent)
+        const location = await page.$eval(`#spnGB27562Area${i}`, element => element.textContent)
+        const time = await page.$eval(`#spnGB27562Tme${i}`, element => element.textContent)
 
         store.id = i+1
         store.name = name
         store.price = parseFloat(price)
+        store.address = address
+        store.location = location
+        store.time = time
 
         stores.push(store)
     }

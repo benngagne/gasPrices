@@ -14,9 +14,17 @@ fetch('/api').then(response => response.json()).then(data => {
     for (var i = 0; i < data.stores.length; i++) {
         let store = data.stores[i] // get single store
         let row = priceTable.insertRow(-1) // insert row at bottom of table
-        let cell1 = row.insertCell(0) // insert first cell
-        let cell2 = row.insertCell(1) // insert second cell
-        cell1.innerText = store.name // set cell 1 to gas station name from api
-        cell2.innerText = store.price // set cell 2 to gas station price from api
+        // insert cells for current row
+        let cell1 = row.insertCell(0)
+        let cell2 = row.insertCell(1)
+        let cell3 = row.insertCell(2)
+        let cell4 = row.insertCell(3)
+        let cell5 = row.insertCell(4)
+        // populate cells with data from api
+        cell1.innerText = store.name
+        cell2.innerText = store.price
+        cell3.innerText = store.address
+        cell4.innerText = store.location
+        cell5.innerText = store.time
     }
 })
