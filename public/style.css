@@ -35,3 +35,11 @@ th:nth-last-of-type(1) {
 td:nth-last-of-type(1) {
     text-align: right;
 }
+
+.footer {
+    position: absolute;
+    left: 0px;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
