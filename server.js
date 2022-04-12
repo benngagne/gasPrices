@@ -2,7 +2,8 @@
 const express = require('express')
 const app = express()
 const puppeteer = require('puppeteer')
-const port = 8081
+
+const port = 8080 // main port
 
 // main web scrapper function
 async function webScraper(url) {
@@ -14,6 +15,7 @@ async function webScraper(url) {
     let stores = [] // empty array of stores
 
     // interate through windsorite gas table and store in object with id, station name, and current price
+    // after storing items in object, push to main stores array
     for(let i = 0; i < 10; i++) {
         const store = {}
 
@@ -38,11 +40,12 @@ async function webScraper(url) {
         return Math.round((average + Number.EPSILON) * 10) / 10 // return average rounded to 1 decimal point
     }
 
-    // return stores array and average of the stores in array
+    // return stores array and average of the stores
+    // returns in an array to be able to return multiple elements
     return [stores, averageData(stores)]
 }
 // main api endpoint
-app.get('/', async (req,res) => {
+app.get('/api', async (req,res) => {
     // run web scrapping function, store returned data (asynchronously)
     const results = await webScraper('https://windsorite.ca/gas')
     // serve data to user, json format
@@ -51,5 +54,7 @@ app.get('/', async (req,res) => {
         "average": results[1]
     })
 })
+
+app.use(express.static('public')) // serve main web page
 
 app.listen(port, () => console.log(`listening on port: ${port}`)) // listen on specified port
