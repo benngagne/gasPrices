@@ -13,13 +13,14 @@ async function webScraper(url) {
     
     let stores = [] // empty array of stores
 
-    // interate through windsorite gas table and store in object with station name and current price
+    // interate through windsorite gas table and store in object with id, station name, and current price
     for(let i = 0; i < 10; i++) {
         const store = {}
 
         const name = await page.$eval(`#spnGB27562StationNm${i}`, element => element.textContent)
         const price = await page.$eval(`#spnGB27562Price${i}`, element => element.textContent)
 
+        store.id = i+1
         store.name = name
         store.price = parseFloat(price)
 
