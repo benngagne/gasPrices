@@ -4,6 +4,6 @@ API/basic web gui that scrapes [windsorite.ca/gas](https://windsorite.ca/gas) fo
 
 ## Usage
 
-Simply run `npm start` to start the node.js server. Change the port at the top of the *server.js* file to your liking. Served as an http web page. API endpoint is at `/api`
+Simply run `npm install` to install all required node package dependencies then `npm start` to start the node.js server. Change the port at the top of the *server.js* file to your liking. Served as an http web page. API endpoint is at `/api`
 
 Default port is `8080`
